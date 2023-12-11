@@ -25,7 +25,7 @@ app.get('/api/health', async (req, res) => {
 const checkApi = (req, res,next) => {
     const { apiKey } = req.query;
 
-    if (apiKey === "abc123") {
+    if (apiKey === "prajkta123") {
         next();
     }
 
@@ -45,14 +45,15 @@ const validateParams = (req, res, next) => {
             message: "All fields are required"
         })
     }
+    next();
 }
-app.get('/api/orders', checkApi, validateParams, async (req, res) => {
+app.get('/api/orders',  async (req, res) => {
    return  res.json({
         success: true,
         data: {},
         message: "Order fetched successfully"
     })
-    next();
+   
 })
 
 app.post('/api/orders', checkApi, validateParams, async (req, res) => {
